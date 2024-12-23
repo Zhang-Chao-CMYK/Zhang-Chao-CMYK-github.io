@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://pdszyjixy.g8n.cn/student/course/92577/leaves/add -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
+    <link href="./新建请假css/weui.min.css" rel="stylesheet">
+    <link href="./新建请假css/bootstrap.min.css" rel="stylesheet">
+    <link href="./新建请假css/style.css" rel="stylesheet">
+    <link href="./新建请假css/line-awesome-nob.min.css" rel="stylesheet">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="./新建请假css/helper.css">
+    <link rel="stylesheet" href="./新建请假css/main_vue.css">
+    <link rel="stylesheet" href="./新建请假css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+
+    <title>平顶山职业技术学院用户中心</title>
+    <style>
+        .fixed-header,
+        .fixed-header+header.row.m-0,
+        .e-bg-primary {
+            background: #009688 !important;
+        }
+
+        .border-primary,
+        .e-border-primary {
+            border-color: #009688 !important;
+        }
+
+        .e-primary {
+            color: #009688 !important;
+        }
+
+        #topbar {
+            background: #009688 !important;
+        }
+
+        @media (max-width: 800px) {
+            .layui-header {
+                background: #009688 !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="color-theme-blue push-content-right theme-light ">
+    <div class="wrapper">
+        <div class="sidebar sidebar-left" id="leftmenuarea">
+            <div class="profile-link"><a href="https://pdszyjixy.g8n.cn/student/course/92577/leaves/add#" class="media">
+                    <div class="w-auto h-100">
+                        <figure class="avatar avatar-40"><i class="la la-user" style="font-size:40px"></i></figure>
+                    </div>
+                    <div class="media-body">
+                        <h5 class=" mb-0">张超 <span class="status-online bg-success"></span></h5>
+                        <p>student</p>
+                    </div>
+                </a></div>
+            <nav class="navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="https://pdszyjixy.g8n.cn/student/courses"> 首页</a></li>
+                    <li class="nav-item"><a href="https://pdszyjixy.g8n.cn/student/account?from=menu"> 账户设置/解绑</a></li>
+                    <li class="nav-item"><a href="https://pdszyjixy.g8n.cn/clearcache.php?ref=/student"> 清空登录缓存</a></li>
+                    <li class="nav-item"><a href="https://pdszyjixy.g8n.cn/student/password"> 修改密码</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="page vue-loading" style="position: absolute;overflow-y: auto">
+            <div id="content">
+                <header class="row m-0 fixed-header ">
+                    <div class="left"><a href="./index.html">
+                        <i class="iconfont icon-fanhui7" style="font-size: 13px;"></i></a></div>
+                    <div class="col center"><a href="javascript:void(0);" class="logo">
+                            新建请假申请
+                        </a></div>
+                </header>
+                <div class="page-content">
+                    <div style="padding: 0px 15px;">
+                        <div class="weui-cells__title">
+                            填写请假条
+                        </div>
+                        <form enctype="application/x-www-form-urlencoded" method="post" id="main_report_form"
+                            action="https://pdszyjixy.g8n.cn/student/course/92577/reports/1/form-save"
+                            onsubmit="submitFormCheck(this); return false;" class="html-form"><input type="hidden"
+                                name="module" value="leaves">
+                            <div data-type="radio" class="form-group"><label class=" control-label">请假类型 <span
+                                        class="required-mark" style="color: red;">*</span></label>
+                                <div><label class="radio-inline" style="margin-right: 10px;min-width: 100px;"><input bjmf-score=""
+                                            link_n="fn_87090" bmfe="bmfe" bmneed="1" field-type="radio" type="radio"
+                                            value="公假" title="公假" name="rd[fn_87090]"> 公假</label><label
+                                        class="radio-inline" style="margin-right: 10px; min-width: 100px;"><input bjmf-score=""
+                                            link_n="fn_87090" bmfe="bmfe" bmneed="1" field-type="radio" type="radio"
+                                            value="事假" title="事假" name="rd[fn_87090]"> 事假</label><label
+                                        class="radio-inline" style="margin-right: 10px; min-width: 100px;"><input bjmf-score=""
+                                            link_n="fn_87090" bmfe="bmfe" bmneed="1" field-type="radio" type="radio"
+                                            value="病假" title="病假" name="rd[fn_87090]"> 病假</label>
+                                    <p class="placeholder">公假：活动、实习等原因</p>
+                                </div>
+                            </div>
+                            <div data-type="radio" class="form-group"><label class=" control-label">是否离校 <span
+                                        class="required-mark" style="color: red;">*</span></label>
+                                <div><label class="radio-inline" style="margin-right: 10px; min-width: 100px;"><input bjmf-score=""
+                                            link_n="fn_92011" bmfe="bmfe" bmneed="1" field-type="radio" type="radio"
+                                            value="离校" title="离校" name="rd[fn_92011]"> 离校</label><label
+                                        class="radio-inline" style="margin-right: 10px; min-width: 100px;"><input bjmf-score=""
+                                            link_n="fn_92011" bmfe="bmfe" bmneed="1" field-type="radio" type="radio"
+                                            value="不离校" title="不离校" name="rd[fn_92011]"> 不离校</label>
+                                    <p class="placeholder"></p>
+                                </div>
+                            </div>
+                            <div linkn="fn_92011" linkv="[&quot;离校&quot;]" data-type="radio" class="form-group"
+                                style="display: none;"><label class=" control-label">是否离开本市 <span class="required-mark"
+                                        style="color: red;">*</span></label>
+                                <div><label class="radio-inline" style="margin-right: 10px;"><input bjmf-score="0"
+                                            link_n="leave_city" bmfe="bmfe" bmneed="1" field-type="radio" type="radio"
+                                            value="是" title="是" name="rd[leave_city]"> 是</label><label
+                                        class="radio-inline" style="margin-right: 10px;"><input bjmf-score="0"
+                                            link_n="leave_city" bmfe="bmfe" bmneed="1" field-type="radio" type="radio"
+                                            value="否" title="否" name="rd[leave_city]"> 否</label>
+                                    <p class="placeholder"></p>
+                                </div>
+                            </div>
+                            <div linkn="leave_city" linkv="[&quot;是&quot;]" data-type="address" class="form-group"
+                                style="display: none;"><label class=" control-label autogps_btn_area">具体去向 <span
+                                        class="required-mark" style="color: red;">*</span></label>
+                                <div><span bjmfform_address="rd_destination" format=""><select
+                                            class="p form-control mb-1">
+                                            <option value="选择省">选择省</option>
+                                            <option value="北京市">北京市</option>
+                                            <option value="天津市">天津市</option>
+                                            <option value="河北省">河北省</option>
+                                            <option value="山西省">山西省</option>
+                                            <option value="内蒙古自治区">内蒙古自治区</option>
+                                            <option value="辽宁省">辽宁省</option>
+                                            <option value="吉林省">吉林省</option>
+                                            <option value="黑龙江省">黑龙江省</option>
+                                            <option value="上海市">上海市</option>
+                                            <option value="江苏省">江苏省</option>
+                                            <option value="浙江省">浙江省</option>
+                                            <option value="安徽省">安徽省</option>
+                                            <option value="福建省">福建省</option>
+                                            <option value="江西省">江西省</option>
+                                            <option value="山东省">山东省</option>
+                                            <option value="河南省">河南省</option>
+                                            <option value="湖北省">湖北省</option>
+                                            <option value="湖南省">湖南省</option>
+                                            <option value="广东省">广东省</option>
+                                            <option value="广西壮族自治区">广西壮族自治区</option>
+                                            <option value="海南省">海南省</option>
+                                            <option value="重庆市">重庆市</option>
+                                            <option value="四川省">四川省</option>
+                                            <option value="贵州省">贵州省</option>
+                                            <option value="云南省">云南省</option>
+                                            <option value="西藏自治区">西藏自治区</option>
+                                            <option value="陕西省">陕西省</option>
+                                            <option value="甘肃省">甘肃省</option>
+                                            <option value="青海省">青海省</option>
+                                            <option value="宁夏回族自治区">宁夏回族自治区</option>
+                                            <option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
+                                            <option value="香港特别行政区">香港特别行政区</option>
+                                            <option value="澳门特别行政区">澳门特别行政区</option>
+                                            <option value="台湾">台湾</option>
+                                            <option value="境外">境外</option>
+                                        </select><select class="c form-control mb-1"></select><select
+                                            class="d form-control mb-1">
+                                            <option value="选择县区">选择县区</option>
+                                        </select><input placeholder="填写县区下详细地址" class="a form-control"><input
+                                            type="hidden" bmfe="bmfe" bmneed="1" field-type="address"
+                                            name="rd[destination]" class="form-control" value="">
+                                        <p class="placeholder"></p>
+                                    </span></div>
+                            </div>
+                            <div data-type="datetime" class="form-group"><label class=" control-label">起始时间 <span
+                                        class="required-mark" style="color: red;">*</span></label>
+                                <div><input link_n="fn_907" bmfe="bmfe" bmneed="1" field-type="datetime"
+                                        readonly="readonly" name="rd[fn_907]" type="text" placeholder="" dtmin=""
+                                        dtmax="" class="form-control form-control-datetimepicker"
+                                        style="border: 1px solid rgb(229, 230, 231);"></div>
+                            </div>
+                            <div data-type="datetime" calc-leave-days="" class="form-group"><label
+                                    class=" control-label">结束时间 <span class="required-mark"
+                                        style="color: red;">*</span></label>
+                                <div><input link_n="fn_2379" bmfe="bmfe" bmneed="1" field-type="datetime"
+                                        readonly="readonly" name="rd[fn_2379]" type="text" placeholder="" dtmin=""
+                                        dtmax="" class="form-control form-control-datetimepicker"
+                                        style="border: 1px solid rgb(229, 230, 231);"></div>
+                            </div>
+                            <div class="form-text text-muted font-12 mt--10 mb-15">不足一天按一天计算（不含周末及法定节假日）<span
+                                    class="text-primary ml-15 float-right pointer"></span></div>
+                            <div data-type="text" class="form-group"><label class=" control-label">联系电话</label>
+                                <div><input bmfe="bmfe" field-type="text" type="text" name="rd[fn_90886]"
+                                        placeholder="期间可联系到本人的号码" dic="" vchk="" class="form-control"></div>
+                            </div>
+                            <div data-type="textarea" class="form-group"><label class=" control-label">事由说明 <span
+                                        class="required-mark" style="color: red;">*</span></label>
+                                <div><textarea bmfe="bmfe" bmneed="1" field-type="textarea" name="rd[fn_901]"
+                                        placeholder="事由详情说明" class="form-control"
+                                        style="height: 66px; overflow-y: hidden;"></textarea></div>
+                            </div>
+                            <div data-type="file" class="form-group"><label class=" control-label">相关证明</label>
+                                <div><input bmfe="bmfe" field-type="file" name="rd[fn_61542]" type="hidden"
+                                        id="form_up_fn_61542" class="form_uploadfile">
+                                    <div class="jFiler jFiler-theme-dragdropbox"><input type="file" name="files[]"
+                                            id="bjmfuploader_form_up_fn_61542" multiple="multiple" autocomplete="off"
+                                            style="position: absolute; left: -9999px; top: -9999px; z-index: -9999;">
+                                        <div class="jFiler-input-dragDrop">
+                                            <div class="jFiler-input-inner">
+                                                <div class="jFiler-input-icon"><i class="icon-cloud-upload"></i></div>
+                                                <div class="jFiler-input-text">
+                                                    <h3>拖拽文件到此处</h3> <span
+                                                        style="display:inline-block; margin: 15px 0">或</span>
+                                                </div><a class="jFiler-input-choose-btn blue-light">点此选择要上传的文件</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="placeholder"></p>
+                                </div>
+                            </div>
+                            <div class="required-mark-bottom mb-15" style="color: rgb(204, 204, 204);">标记有 <span
+                                    style="color: red;">*</span> 的是必填项。</div><input type="hidden" name="rd[__form_id__]"
+                                value="17">
+                            <div class="text-center mt-20"><input type="submit" value="提交"
+                                    class="weui-btn weui-btn_mini weui-btn_primary w-150 submit-btn"></div>
+                        </form>
+                        <div class="mb-15"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link href="./新建请假css/jquery.filer.css" rel="stylesheet">
+
+</body>
+
+</html>
