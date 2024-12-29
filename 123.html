@@ -1,0 +1,6 @@
+<label for="submitTime">提交时间:</label>
+    <input type="datetime-local" id="submitTime" name="submitTime">
+
+    const submitTime = document.getElementById('submitTime').value;
+
+    localStorage.setItem('leaveSubmitTime', formatTime(submitTime));

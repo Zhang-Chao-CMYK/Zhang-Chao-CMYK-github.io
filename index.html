@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>请假页面</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f0fa; /* 柔和的粉色背景 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      width: 90%;
+      max-width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 16px; /* 更圆润的边角 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      background-color: #ffecf0; /* 柔和的粉色 */
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #ff69b4; /* 粉色字体 */
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      margin-bottom: 5px;
+      font-size: 16px;
+      color: #800080; /* 紫色字体 */
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 10px;
+      border: 1px solid #ff69b4; /* 粉色边框 */
+      border-radius: 16px; /* 更圆润的边角 */
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #ff1493; /* 更深的粉色 */
+    }
+
+    .form-group button,
+    .form-group .btn-link {
+      padding: 10px;
+      background-color: #ff69b4; /* 粉色按钮 */
+      color: #fff;
+      border: none;
+      border-radius: 16px; /* 更圆润的边角 */
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      transition: background-color 0.3s;
+    }
+
+    .form-group button:hover,
+    .form-group .btn-link:hover {
+      background-color: #ff1493; /* 更深的粉色 */
+    }
+
+    .form-group .btn-link {
+      background-color: #800080; /* 紫色按钮 */
+    }
+
+    .form-group .btn-link:hover {
+      background-color: #9932cc; /* 更深的紫色 */
+    }
+
+    .confirmation-message {
+      text-align: center;
+      margin-top: 20px;
+      color: #ff69b4; /* 粉色字体 */
+      font-size: 18px;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 15px;
+      }
+
+      .form-container h2 {
+        font-size: 22px;
+      }
+
+      .form-group label {
+        font-size: 14px;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select,
+      .form-group button,
+      .form-group .btn-link {
+        font-size: 14px;
+      }
+
+      .confirmation-message {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h2>请假申请表</h2>
+    <form id="leaveForm">
+      <div class="form-group">
+        <label for="name">姓名:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="studentId">学号:</label>
+        <input type="text" id="studentId" name="studentId" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">性别:</label>
+        <select id="gender" name="gender" required>
+          <option value="male">男</option>
+          <option value="female">女</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="startTime">起始时间:</label>
+        <input type="datetime-local" id="startTime" name="startTime" required>
+      </div>
+
+      <div class="form-group">
+        <label for="endTime">截止时间:</label>
+        <input type="datetime-local" id="endTime" name="endTime" required>
+      </div>
+
+      <div class="form-group">
+        <label for="departureTime">出校时间:</label>
+        <input type="datetime-local" id="departureTime" name="departureTime" required>
+      </div>
+
+      <div class="form-group">
+        <label for="submitTime">提交时间:</label>
+        <input type="datetime-local" id="submitTime" name="submitTime" required>
+      </div>
+
+      <div class="form-group">
+        <label for="reviewTime">审核时间:</label>
+        <input type="datetime-local" id="reviewTime" name="reviewTime" required>
+      </div>
+
+      <div class="form-group">
+        <label for="applyTime">申请时间:</label>
+        <input type="datetime-local" id="applyTime" name="applyTime" required>
+      </div>
+
+      <div class="form-group">
+        <label for="reason">请假缘由:</label>
+        <textarea id="reason" name="reason" rows="4" cols="50" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <button type="submit">提交</button>
+        <a href="首页.html" class="btn-link" style="margin-top: 10px;text-decoration: none;">使用上一次信息</a>
+      </div>
+    </form>
+    <div class="confirmation-message" id="confirmationMessage" style="display: none;">
+      请假申请已提交！
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('leaveForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // 阻止表单默认提交行为
+
+      const name = document.getElementById('name').value;
+      const studentId = document.getElementById('studentId').value;
+      const gender = document.getElementById('gender').value;
+      const startTime = document.getElementById('startTime').value;
+      const endTime = document.getElementById('endTime').value;
+      const departureTime = document.getElementById('departureTime').value;
+      const submitTime = document.getElementById('submitTime').value;
+      const reviewTime = document.getElementById('reviewTime').value;
+      const applyTime = document.getElementById('applyTime').value;
+      const reason = document.getElementById('reason').value;
+
+      // 将时间数据存储到本地存储
+      localStorage.setItem('leaveName', name);
+      localStorage.setItem('leaveStudentId', studentId);
+      localStorage.setItem('leaveGender', gender);
+      localStorage.setItem('leaveStartTime', formatTime(startTime));
+      localStorage.setItem('leaveEndTime', formatTime(endTime));
+      localStorage.setItem('leaveDepartureTime', formatChineseDate(departureTime.split('T')[0]));
+      localStorage.setItem('leaveSubmitTime', formatTime(submitTime));
+      localStorage.setItem('leaveReviewTime', formatTime(reviewTime));
+      localStorage.setItem('leaveApplyTime', formatChineseTime(applyTime));
+      localStorage.setItem('leaveReason', reason);
+
+      // 显示确认消息
+      const confirmationMessage = document.getElementById('confirmationMessage');
+      confirmationMessage.style.display = 'block';
+
+      // 延迟跳转到其他页面
+      setTimeout(() => {
+        window.location.href = '首页.html';
+      }, 2000); // 2秒后跳转
+    });
+
+    function formatTime(dateTime) {
+      const [date, time] = dateTime.split('T');
+      return `${date} ${time}`;
+    }
+
+    function formatChineseTime(dateTime) {
+      const [date, time] = dateTime.split('T');
+      const [year, month, day] = date.split('-');
+      return `${year}年${parseInt(month)}月${parseInt(day)}日 ${time}`;
+    }
+
+    function formatChineseDate(date) {
+      const [year, month, day] = date.split('-');
+      return `${parseInt(month)}月${parseInt(day)}日`;
+    }
+  </script>
+</body>
+
+</html>

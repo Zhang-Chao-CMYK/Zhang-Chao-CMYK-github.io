@@ -1,0 +1,352 @@
+//$.toast.prototype.defaults.duration = 1500;
+/*
+$(function() {
+  FastClick.attach(document.body);
+});
+* */
+if (Vue && window.vuelidate) {
+  Vue.use(window.vuelidate.default);
+}
+
+window.exam = window.exam || {};
+
+$(function () {
+  $('.weui-cells__title.collapsible').each(function () {
+    var $t = $(this);
+    $t.append('<span class="right-tip">折叠 <i class="la la-angle-up"></i></span>');
+
+    var $tip = $t.find('.right-tip');
+    $t.on('click', function () {
+      var $body = $t.next().find('> *:not(.stay)');
+      if ($t.hasClass('collapsed')) {
+        $tip.html('折叠 <i class="la la-angle-up"></i>');
+        $body.show();
+        $t.removeClass('collapsed');
+      } else {
+        $tip.html('展开 <i class="la la-angle-down"></i>');
+        $body.hide();
+        $t.addClass('collapsed');
+      }
+    });
+
+    if ($t.hasClass('collapsed')) {
+      $tip.html('展开 <i class="la la-angle-down"></i>');
+      var $body = $t.next().find('> *:not(.stay)');
+      $body.hide();
+    }
+  });
+});
+
+exam.request = function (url, cb, method, data, silent, errCb, errNetWorkCb) {
+  method = method || 'get';
+  data = data || {};
+
+  if ($.hideLoading && !$.isLoading() && !silent && cb !== 'toast') {
+    $.showLoading();
+  }
+
+  var that$ = $;
+
+  $.ajax({
+    method: method,
+    url: url,
+    data: data
+  }).done(function (resp) {
+    that$.hideLoading && that$.hideLoading();
+    if (!resp.success) {
+      if (!silent) {
+        alert(resp.message);
+        if (errCb) {
+          errCb(resp);
+        }
+      } else {
+        if (errCb) {
+          errCb(resp);
+        }
+      }
+      return
+    }
+    if (!cb) {
+      cb = function () {};
+    } else if (cb === true) {
+      cb = function (resp) {
+        if (resp.success) {
+          setTimeout(function () {
+            exam.success(resp.message)
+          }, 400);
+        }
+      }
+    } else if (cb === 'toast') {
+      if (resp.success) {
+        setTimeout(function () {
+          exam.toast(resp.message || '保存成功！', resp.message ? 'primary' : 'success')
+        }, 400);
+      }
+    }
+    if (typeof(cb) === 'function') {
+      cb(resp)
+    }
+  }).fail(function (xhr, textStatus, errorThrown) {
+    that$.hideLoading();
+    var message = xhr.statusText;
+    if (textStatus && textStatus !== xhr.statusText) {
+      message += ' (' + textStatus + ')';
+    }
+    if (errorThrown && errorThrown !== textStatus && errorThrown !== xhr.statusText) {
+      message += ' (' + errorThrown + ')';
+    }
+    var resp = {
+      success: false,
+      message: '请求失败：' + (message || '未知错误') + '。请检查网络连接后重试。'
+    };
+    if (!silent) {
+      console.error(resp.message);
+      if (errNetWorkCb) {
+        errNetWorkCb(resp, xhr, errorThrown)
+      }
+      // setTimeout(function () {
+      //   exam.error(resp.message, function () {
+      //     if (errCb) {
+      //       errCb(resp);
+      //     }
+      //   });
+      // }, 400);
+    } else {
+      if (errCb) {
+        errCb(resp);
+      }
+    }
+  });
+};
+
+exam.success = function (text, cb, duration) {
+  weui.toast(text || '操作成功！', {duration: duration || 2000, callback:cb || function(){}});
+};
+
+exam.error = function (text, cb) {
+  weui.alert(text || '操作失败！', cb, {
+    title: '错误'
+  });
+};
+
+exam.toast = function (text, type, timeout) {
+  type = type || 'primary';
+  text = text || '操作成功！';
+  var icon = '<i class="las la-info mr-5"></i>';
+  if (type === 'success') {
+    icon = '<i class="las la-check mr-5"></i>';
+  } else if (type === 'danger') {
+    icon = '<i class="las la-times mr-5"></i>';
+  }
+  var $el = $('<div class="exam-toast bg-' + type + '">' + icon + ' ' + text + '</div>');
+  $el.appendTo('body');
+  setTimeout(function () {
+    $el.remove();
+  }, timeout || 2000);
+}
+
+exam.noTabBar = function () {
+  $(function () {
+    $('#btmbar').remove();
+  });
+};
+
+exam.checkedIds = function (arr) {
+  return _.map(_.filter(arr, function (c) {
+    return c.checked
+  }), function (c) {
+    return c.id
+  })
+}
+
+exam.checkObjectsById = function (arr, ids) {
+  _.forEach(arr, function (v, k) {
+    if (_.includes(ids, v.id)) {
+      v.checked = true
+    }
+  })
+}
+
+exam.timeFromPicker = function (v) {
+  return moment(v[0] + '-' + v[1] + '-' + v[2] + ' ' + v[3] + ':' + v[4]);
+}
+
+exam.valueForTimePicker = function (timestamp) {
+  var m = moment.unix(timestamp);
+  return [
+    m.year().toString(),
+    _.padStart(m.month() + 1, 2, '0'),
+    _.padStart(m.date(), 2, '0'),
+    _.padStart(m.hour(), 2, '0'),
+    _.padStart(m.minute(), 2, '0')
+  ];
+}
+
+exam.setValueForTimePicker = function (picker, timestamp) {
+  var m = moment.unix(timestamp);
+  $(picker).val(m.format('YYYY-MM-DD HH:mm'));
+}
+
+exam.trackFrameHeight = function (iframe) {
+  setInterval(function () {
+    var method = iframe[0].contentWindow.getContentHeight;
+    if (method) {
+      iframe.height(method());
+    }
+  }, 100);
+}
+
+exam.groupSelectData = function (items) {
+  var result = [
+    {
+      title: '我创建的',
+      items: []
+    },
+    {
+      title: '公用',
+      items: []
+    }
+  ];
+  _.forEach(items, function (v, k) {
+    var index = v.teacher_id ? 0 : 1;
+    result[index].items.push(v);
+  })
+  return result;
+}
+
+exam.redirectOrCloseLayer = function (url) {
+  if (window.parent !== window && window.parent.admin && window.parent.layer) {
+    window.parent.layer.closeAll();
+    window.parent.location.reload();
+  } else {
+    location.href = url;
+  }
+}
+
+exam.openTab = function (url, title) {
+  if (top.layui && top.layui.index && top.layui.index.openTab) {
+    top.layui.index.openTab({url: url, title: title});
+  } else {
+    location.href = url;
+  }
+};
+
+exam.asObject = function (a) {
+  if (!a) {
+    return {};
+  }
+  if (a.length === 0) {
+    return {};
+  }
+  return a;
+};
+
+if (!$.showLoading) {
+  $.showLoading = function (content, option) {
+    content = content || '加载中...';
+    $(weui.loading(content))
+        .stop(true, true)
+        .show()
+        .find('.weui-toast__content').text(content);
+  };
+
+  $.hideLoading = function () {
+    $('body > .weui-loading_toast').fadeOut('fast');
+  };
+}
+
+$.showLoadingAndRedirect = function (url) {
+  $.showLoading();
+  setTimeout(function () {
+    location.href = url;
+  }, 3000);
+};
+
+$.isLoading = function () {
+  return $('body > .weui-loading_toast:visible').length;
+};
+
+$(document).ajaxError(function () {
+    $.hideLoading();
+});
+
+$(window).on('pageshow', function () {
+  $.hideLoading();
+});
+
+if (window.html_upload_js_auto) {
+  function html_upload_js_auto_1_image(id) {
+    html_upload_js_auto(id, {
+      limit: 1,
+      extensions: ['png', 'jpg', 'jpeg', 'gif']
+    });
+  }
+
+  function html_upload_parsed_value(id, defaultValue = null) {
+    const v = $('#' + id).val();
+    if (!v || v === '[]') {
+      return defaultValue;
+    }
+    return v;
+  }
+}
+
+$(function() {
+  if (window.weui) {
+    weui.prompt = function (title, onDone, onCancel) {
+      var id = 'exam_prompt_' + Date.parse(new Date());
+      weui.dialog({
+        title: title,
+        content: '<input type="text" class="form-control" placeholder="在这里输入内容" id="' + id + '" />',
+        className: 'custom-classname',
+        buttons: [{
+          label: '取消',
+          type: 'default',
+          onClick: function () {
+            if (onCancel) {
+              onCancel();
+            }
+          }
+        }, {
+          label: '确定',
+          type: 'primary',
+          onClick: function () {
+            onDone($('#' + id).val());
+          }
+        }]
+      });
+    };
+
+    weui.promptDelayed = function (title, onDone, onCancel) {
+      setTimeout(function () {
+        weui.prompt(title, function (v) {
+          setTimeout(function () {
+            onDone(v);
+          }, 350);
+        }, onCancel);
+      }, 350);
+    };
+
+    $('.form-control-datepicker2').on('click', function () {
+      var self = $(this);
+      var v = self.val();
+      if (v) {
+        var parts = v.split('-');
+        v = parts.map(function (part) {
+          return parseInt(part);
+        });
+      }
+      weui.datePicker({
+        defaultValue: v,
+        onConfirm: function (r) {
+          const value = r.map(function (_) {
+            return _ < 10 ? ('0' + _) : _;
+          }).join('-');
+          self.val(value);
+          self.trigger('change');
+        },
+        title: '选择日期'
+      });
+    });
+  }
+});

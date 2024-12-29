@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://pdszyjixy.g8n.cn/student/course/92577/leaves/8334650/pass-card -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
+    <link href="./请假css/weui.min.css" rel="stylesheet">
+    <link href="./请假css/bootstrap.min.css" rel="stylesheet">
+    <link href="./请假css/style.css" rel="stylesheet">
+    <link href="./请假css/line-awesome-nob.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./请假css/helper.css">
+    <script src="https://hm.baidu.com/hm.js?362de400d3fe4117e8e3513a52c0da9d"></script>
+    <script>
+        var gconfig = {
+            role: 'student',
+            type: 'fdy',
+            cname: '院系',
+            uname: '刘锋',
+            uid: 2532936
+        };
+        var COURSE_ID = 92577;
+        var sitecdn = '//c.d8n.cn';
+        var sitecdn_bak = '';
+    </script>
+    <script src="./平顶山职业技术学院用户中心_files/jquery-1.12.4.min.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/weui.min.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/app.js.下载"></script>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="./请假css/helper.css">
+    <link rel="stylesheet" href="./请假css/main_vue.css">
+
+    <title>平顶山职业技术学院用户中心</title>
+    <style>
+        .fixed-header,
+        .fixed-header+header.row.m-0,
+        .e-bg-primary {
+            background: #009688 !important;
+        }
+
+        .border-primary,
+        .e-border-primary {
+            border-color: #009688 !important;
+        }
+
+        .e-primary {
+            color: #009688 !important;
+        }
+
+        #topbar {
+            background: #009688 !important;
+        }
+
+        @media (max-width: 800px) {
+            .layui-header {
+                background: #009688 !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="color-theme-blue push-content-right theme-light ">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div class="wrapper">
+        <div class="page vue-loading" style="position: absolute;overflow-y: auto">
+            <div id="content">
+                <header class="row m-0 fixed-header ">
+                    <div class="left">
+                        <a href="javascript:" onclick="history.back()"><i class="iconfont icon-fanhui7"></i></a>
+                    </div>
+                    <div class="col center">
+                        <a href="javascript:void(0);" class="logo">
+                            出示假条
+                        </a>
+                    </div>
+
+
+
+
+                    <div class="right auto">
+                        <a href="javascript:" onclick="$('#qrcode_box2_area').toggle();"
+                            style="display: flex; align-items: center;">
+                            <i class="iconfont icon-erweima" style="margin-right: 8px;"></i> 出示假条核验码
+                        </a>
+                    </div>
+                </header>
+                <div class="page-content">
+                    <div style="padding:0 15px;">
+
+
+                        <div id="qrcode_box2_area" class="text-center my-20 hide">
+                            <div id="qrcode_box2" class="mt-10 ">
+                                <script type="text/javascript" src="./平顶山职业技术学院用户中心_files/jquery.qrcode.min.js.下载">
+                                </script>
+                                <div id="qrcode_img2"><img src="./二维码.png" alt=""></div>
+                                <div style="color: red;font-size: 12px;">只能使用专用核验工具扫码</div>
+                                <!--1619-->
+                                <script>
+                                    $(function () {
+                                        $('#qrcode_img2').qrcode({
+                                            text: 'S0L:8334650-c40e904c9a1539e7ba',
+                                            width: 158,
+                                            height: 158
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card mt-15">
+                            <div class="card-body ">
+                                <div class="card-text relative text-dark">
+                                    <p class="h2 text-center text-dark font-weight-light">
+                                        请假条
+                                    </p>
+                                    <p style="text-align: center;color: red">平顶山职业技术学院 计算机科学与应用系</p>
+
+                                    <img id="approved_icon" src="./approved.png" alt=""
+                                        style="animation: 0.3s ease-in 0s 1 normal none running stamp; display: inline;">
+
+                                    <div class="row mt-30 mb-20">
+                                        <div class="col d-flex flex-column justify-content-center align-items-center">
+                                            <figure class="figure mb-0">
+                                                <img class="figure-img img-fluid rounded" src="./原头像.png" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="col d-flex flex-column justify-content-center pl-0">
+                                            <p class="h5 mb-15 mt-5 text-dark"><span class="h6">姓名：</span><span
+                                                    id="nameDisplay"></span></p>
+                                            <p class="h6 mb-10 font-weight-normal">
+                                                性别：<span id="genderDisplay"></span></p>
+                                            <p class="h6 mb-10 font-weight-normal">院系：计算机科学与应用系-2023-霍进进</p>
+                                            <p class="h6 mb-10 font-weight-normal">学号：<span
+                                                    id="studentIdDisplay"></span></p>
+                                        </div>
+                                    </div>
+
+                                    <div id="qrcode_box" class="mv-20 text-center relative" style="display: none">
+                                        <div id="qrcode_img"></div>
+                                        <div id="qrcode_loading"><i class="la la-refresh la-spin"></i></div>
+                                        <div class="mt-10 text-danger font-12">
+                                            有效期5分钟，到期后请
+                                            <a href="javascript:" onclick="refreshQrCode()"><i
+                                                    class="la la-refresh"></i> 刷新</a>
+                                        </div>
+                                    </div>
+
+                                    <p class="h6 font-weight-normal">请假时间</p>
+                                    <table class="table time-table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <th>起</th>
+                                                <td>
+                                                    <p class="h3 font-weight-light text-dark"><span
+                                                            id="startTimeDisplay"></span></p>
+                                                </td>
+                                                <th><span class="invisible">起</span></th>
+                                            </tr>
+                                            <tr>
+                                                <th>至</th>
+                                                <td>
+                                                    <p class="h3 font-weight-light text-dark"><span
+                                                            id="endTimeDisplay"></span></p>
+                                                </td>
+                                                <th><span class="invisible">至</span></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="text-center asd mt-20 text-success mb--10 font-24"
+                                        style="margin-top: 20px !important; color: red!important;">
+                                        离校不出市
+                                    </div>
+
+                                    <div class="text-center">
+                                        <table class="table bottom-table table-sm table-borderless mt-30"
+                                            style="margin-top: 30px !important;">
+                                            <tbody>
+                                                <tr>
+                                                    <th>审批人：</th>
+                                                    <td class="text-dark">霍进进</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>批准时间：</th>
+                                                    <td class="text-dark"><span id="reviewTimeDisplay"></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            console.log('页面加载完成');
+
+                                            // 检查元素是否存在
+                                            const elements = [
+                                                'nameDisplay',
+                                                'genderDisplay',
+                                                'studentIdDisplay',
+                                                'startTimeDisplay',
+                                                'endTimeDisplay',
+                                                'reviewTimeDisplay',
+                                            ];
+
+                                            elements.forEach(id => {
+                                                if (!document.getElementById(id)) {
+                                                    console.error(`元素#${id}不存在`);
+                                                }
+                                            });
+
+                                            // 直接设置批准时间
+                                            const reviewTime = localStorage.getItem('leaveReviewTime') || '未设置';
+                                            console.log('批准时间:', reviewTime);
+                                            document.getElementById('reviewTimeDisplay').innerText = reviewTime;
+
+                                            const name = localStorage.getItem('leaveName') || '未设置';
+                                            const gender = localStorage.getItem('leaveGender') || '未设置';
+                                            const studentId = localStorage.getItem('leaveStudentId') || '未设置';
+
+                                            console.log('姓名:', name);
+                                            console.log('性别:', gender);
+                                            console.log('学号:', studentId);
+
+
+                                            document.getElementById('nameDisplay').innerText = name;
+                                            document.getElementById('genderDisplay').innerText = gender;
+                                            document.getElementById('studentIdDisplay').innerText = studentId;
+
+                                            // 转换性别
+                                            const genderDisplayText = gender === 'male' ? '男' : gender ===
+                                                'female' ? '女' : gender;
+                                            document.getElementById('genderDisplay').innerText =
+                                                genderDisplayText;
+                                            // 确保其他数据也正常显示
+                                            document.getElementById('startTimeDisplay').innerText = localStorage
+                                                .getItem('leaveStartTime') || '未设置';
+                                            document.getElementById('endTimeDisplay').innerText = localStorage
+                                                .getItem('leaveEndTime') || '未设置';
+                                        });
+                                    </script>
+
+                                    <style>
+                                        #watermark {
+                                            position: absolute;
+                                            font-size: 5em;
+                                            font-weight: bold;
+                                            text-align: center;
+                                            line-height: 1.2em;
+                                            top: 57%;
+                                            left: 50%;
+                                            transform: translate(-50%, -50%);
+                                            z-index: -1;
+                                            color: rgba(0, 0, 0, 0.08);
+                                        }
+                                    </style>
+
+                                    <div id="watermark" style="top: 58%;">2024/12/17 20:30:34</div>
+
+                                    <script>
+                                        var $w = $('#watermark');
+                                        var $wDate = new Date();
+                                        var $wt = 57;
+                                        var $ws = 1;
+
+                                        $.get('/timestamp', function (resp) {
+                                            $wDate = new Date((resp.data - 1) * 1000);
+                                            updateWatermark();
+                                        });
+
+                                        function updateWatermark() {
+                                            $wDate.setSeconds($wDate.getSeconds() + 1);
+                                            var t = $wDate.toLocaleString();
+                                            $w.html(t).css({
+                                                top: $wt + '%'
+                                            });
+                                            if ($wt > 75) {
+                                                $ws = -1;
+                                            } else if ($wt < 57) {
+                                                $ws = 1;
+                                            }
+                                            $wt += $ws;
+                                        }
+
+                                        updateWatermark();
+                                        setInterval(updateWatermark, 1000);
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-center mt-20 mb-30"
+                            style="display: flex; align-items: center;  justify-content: center; margin-top: 10px;">
+                            <a href="javascript:" class="link p-10" onclick="backToSchool()">
+                                点击返校
+
+                            </a>
+                            <i class="iconfont icon-gengduo"></i>
+                        </div>
+
+                        <style>
+                            .time-table th,
+                            .bottom-table th {
+                                font-weight: normal;
+                                color: #666;
+                                text-align: right;
+                                vertical-align: middle;
+                            }
+
+                            .time-table td {
+                                width: 220px;
+                            }
+
+                            .time-table p {
+                                margin-bottom: 0 !important;
+                            }
+
+                            .time-table {
+                                border-bottom: 1px solid #dee2e6;
+                            }
+
+                            .bottom-table {
+                                width: auto;
+                                font-size: 16px;
+                                text-align: left;
+                                margin: 0 auto;
+                            }
+
+                            #approved_icon {
+                                position: absolute;
+                                right: -15px;
+                                top: -15px;
+                                width: 110px;
+                                z-index: 100;
+                                display: none;
+                            }
+
+                            .bg-light-danger {
+                                background-color: rgba(255, 0, 0, 0.15);
+                            }
+
+                            .bg-light-success {
+                                background-color: #c5ffc5;
+                            }
+
+                            @keyframes stamp {
+                                from {
+                                    right: -90px;
+                                    width: 200px;
+                                    opacity: 0.5;
+                                }
+
+                                to {
+                                    right: -15px;
+                                    width: 110px;
+                                    opacity: 1;
+                                }
+                            }
+                        </style>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./平顶山职业技术学院用户中心_files/bootstrap.bundle.min.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/main.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/lodash.min.js.下载"></script>
+
+    <script src="./平顶山职业技术学院用户中心_files/vue.min.js.下载"></script>
+
+    <script src="./平顶山职业技术学院用户中心_files/uuid.min.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/linq.min.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/localforage.min.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/vuelidate.min.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/validators.min.js.下载"></script>
+    <script src="./平顶山职业技术学院用户中心_files/main_vue_4m2019.js.下载"></script>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?362de400d3fe4117e8e3513a52c0da9d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</body>
+
+</html>
